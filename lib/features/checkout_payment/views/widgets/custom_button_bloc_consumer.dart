@@ -1,0 +1,146 @@
+import 'package:doc/features/book_appoint/logic/appointment_cubit.dart';
+import 'package:doc/features/checkout_payment/data/models/payment_intent_input_model.dart';
+import 'package:doc/features/checkout_payment/presentation/manger/payment_cubit.dart';
+import 'package:doc/features/checkout_payment/views/thank_you_view.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+class CustomButtonBlocConsumer extends StatelessWidget {
+  final double total;
+  final int doctorId;
+  final String startTime;
+
+  const CustomButtonBlocConsumer({
+    super.key,
+    required this.total,
+    required this.doctorId,
+    required this.startTime,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocConsumer<PaymenttCubit, PaymentState>(
+      listener: (context, state) {
+        if (state is PaymentSuccess) {
+          // لما الدفع ينجح، احجز الموعد
+          context.read<AppointmentCubit>().bookAppointment(
+                doctorId: doctorId,
+                startTime: startTime,
+              );
+
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(
+              builder: (context) {
+                return ThankYouView(total: total.toStringAsFixed(2));
+              },
+            ),
+          );
+        }
+
+        if (state is PaymentFailure) {
+          Navigator.of(context).pop();
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Row(
+                children: [
+                  Icon(Icons.error_outline, color: Colors.white),
+                  SizedBox(width: 8.w),
+                  Expanded(child: Text(state.errMessage)),
+                ],
+              ),
+              backgroundColor: Colors.red[600],
+              behavior: SnackBarBehavior.floating,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+            ),
+          );
+        }
+      },
+      builder: (context, state) {
+        return Container(
+          width: double.infinity,
+          height: 56.h,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            gradient: LinearGradient(
+              colors: [
+                Theme.of(context).primaryColor,
+                Theme.of(context).primaryColor.withOpacity(0.8),
+              ],
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Theme.of(context).primaryColor.withOpacity(0.3),
+                spreadRadius: 1,
+                blurRadius: 8,
+                offset: const Offset(0, 4),
+              ),
+            ],
+          ),
+          child: ElevatedButton(
+            onPressed: state is PaymentLoading
+                ? null
+                : () {
+                    PaymentIntentInputModel paymentIntentInputModel =
+                        PaymentIntentInputModel(
+                      amount: '${(total).toInt()}',
+                      currency: 'USD',
+                      cusomerId: 'cus_SCZxTwXxxe7kWr',
+                    );
+
+                    BlocProvider.of<PaymenttCubit>(context)
+                        .makePayment(paymentIntentInputModel: paymentIntentInputModel);
+                  },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.transparent,
+              foregroundColor: Colors.white,
+              shadowColor: Colors.transparent,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
+              elevation: 0,
+            ),
+            child: state is PaymentLoading
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        width: 20.w,
+                        height: 20.h,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                          valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                        ),
+                      ),
+                      SizedBox(width: 12.w),
+                      Text(
+                        'Processing...',
+                        style: TextStyle(
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  )
+                : Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.lock_rounded, size: 20.sp),
+                      SizedBox(width: 8.w),
+                      Text(
+                        'Pay Securely',
+                        style: TextStyle(
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+          ),
+        );
+      },
+    );
+  }
+}
