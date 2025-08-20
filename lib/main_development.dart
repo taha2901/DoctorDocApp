@@ -25,9 +25,6 @@ void main() async {
   await EasyLocalization.ensureInitialized();
   await dotenv.load();
   Stripe.publishableKey = ApiKeys.publicKey;
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
   setUpGetIt();
   // To fix texts being hidden  bug in flutter_screenutil in release mode
   await ScreenUtil.ensureScreenSize();
@@ -37,9 +34,8 @@ void main() async {
   ));
 }
 
-checkLoggedInUser() async {
-  String? userToken =
-      await SharedPrefHelper.getSecuredString(SharedPrefKeys.userToken);
+Future<void> checkLoggedInUser() async {
+  String? userToken = await SharedPrefHelper.getSecuredString(SharedPrefKeys.userToken);
   if (!userToken.isNullOrEmpty()) {
     isLoggedInUser = true;
   } else {

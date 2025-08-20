@@ -16,18 +16,15 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await EasyLocalization.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
     statusBarIconBrightness: Brightness.dark,
     systemNavigationBarColor: Colors.white,
     systemNavigationBarIconBrightness: Brightness.dark,
   ));
+  await EasyLocalization.ensureInitialized();
   await dotenv.load();
   Stripe.publishableKey = ApiKeys.publicKey;
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-);
   setUpGetIt();
   // To fix texts being hidden  bug in flutter_screenutil in release mode
   await ScreenUtil.ensureScreenSize();
@@ -37,7 +34,7 @@ void main() async {
   ));
 }
 
-checkLoggedInUser() async {
+Future<void> checkLoggedInUser() async {
   String? userToken =
       await SharedPrefHelper.getSecuredString(SharedPrefKeys.userToken);
   if (userToken.isNullOrEmpty()) {
