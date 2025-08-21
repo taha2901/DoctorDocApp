@@ -5,9 +5,7 @@ import 'package:doc/core/helpers/extentions.dart';
 import 'package:doc/core/helpers/shared_pref_helper.dart';
 import 'package:doc/core/routings/app_router.dart';
 import 'package:doc/doc_app.dart';
-import 'package:doc/firebase_options.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -37,7 +35,7 @@ void main() async {
 Future<void> checkLoggedInUser() async {
   String? userToken =
       await SharedPrefHelper.getSecuredString(SharedPrefKeys.userToken);
-  if (userToken.isNullOrEmpty()) {
+  if (!userToken.isNullOrEmpty()) {
     isLoggedInUser = true;
   } else {
     isLoggedInUser = false;

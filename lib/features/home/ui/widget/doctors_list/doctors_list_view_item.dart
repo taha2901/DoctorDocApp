@@ -10,7 +10,7 @@ import 'package:shimmer/shimmer.dart';
 class DoctorsListViewItem extends StatelessWidget {
   final Doctors? doctorsModel;
   final VoidCallback onTap;
-  
+
   const DoctorsListViewItem({
     super.key,
     this.doctorsModel,
@@ -32,34 +32,15 @@ class DoctorsListViewItem extends StatelessWidget {
           margin: EdgeInsets.only(bottom: 16.h),
           child: Row(
             children: [
-              CachedNetworkImage(
-                imageUrl:
-                    "https://static.wikia.nocookie.net/five-world-war/images/6/64/Hisoka.jpg/revision/latest?cb=20190313114050",
-                progressIndicatorBuilder: (context, url, downloadProgress) {
-                  return Shimmer.fromColors(
-                    baseColor: ColorsManager.lightGrey,
-                    highlightColor: Colors.white,
-                    child: Container(
-                      width: 110.w,
-                      height: 120.h,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.rectangle,
-                        borderRadius: BorderRadius.circular(12.0),
-                        color: Colors.white,
-                      ),
-                    ),
-                  );
-                },
-                imageBuilder: (context, imageProvider) => Container(
-                  width: 110.w,
-                  height: 120.h,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.circular(12.0),
-                    image: DecorationImage(
-                      image: imageProvider,
-                      fit: BoxFit.cover,
-                    ),
+              Container(
+                width: 110.w,
+                height: 120.h,
+                decoration: BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.circular(12.0),
+                  image: DecorationImage(
+                    image: AssetImage("assets/images/Image.png"),
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
