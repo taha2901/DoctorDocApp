@@ -1,36 +1,34 @@
 name: doc
 description: "A new Flutter project."
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
-version: 1.0.5+1
+publish_to: 'none'
+version: 1.0.6+1
 
 environment:
   sdk: ^3.5.0
+
 dependencies:
   flutter:
     sdk: flutter
 
   cupertino_icons: ^1.0.8
-  flutter_bloc: ^9.1.1 
-  # freezed : Code generation for immutable classes that has a simple syntax/API without compromising on the features.
-  freezed: ^3.0.0-0.0.dev
-  freezed_annotation: ^2.4.1
+  flutter_bloc: ^9.1.1
+
+  # ✅ Freezed (runtime annotations only)
+  freezed_annotation: ^3.1.0
+
   get_it: ^8.2.0
-  # json serializable : Automatically generate code for converting to and from JSON by annotating Dart classes.
-  json_serializable: ^6.8.0
-  # json annotation : Classes and helper functions that support JSON code generation via the `json_serializable` package.
+
+  # ✅ JSON (runtime annotations only)
   json_annotation: ^4.9.0
+
   dio: ^5.6.0
-  # retrofit : retrofit.dart is an dio client generator using source_gen and inspired by Chopper and Retrofit.
-  retrofit: ^4.2.0
-  retrofit_generator: ^10.0.2
   pretty_dio_logger: ^1.4.0
+
   intl: 0.20.2
   easy_localization: ^3.0.7
   flutter_native_splash: ^2.4.1
   flutter_svg: ^2.0.10+1
   flutter_screenutil: ^5.9.3
-  # build runner : build system for dart generated code and modualar comilation
-  build_runner: ^2.4.12
   firebase_core: ^4.0.0
   cached_network_image: ^3.4.1
   flutter_secure_storage: ^9.2.4
@@ -44,7 +42,7 @@ dependencies:
   flutter_staggered_animations: ^1.1.1
   shared_preferences: ^2.5.3
   dartz: ^0.10.1
-  flutter_stripe: ^11.5.0
+  flutter_stripe: 12.1.1
   geocoding: ^4.0.0
   geolocator: ^14.0.2
   http: ^1.5.0
@@ -52,42 +50,22 @@ dependencies:
   permission_handler: ^12.0.1
   flutter_dotenv: ^5.2.1
   google_generative_ai: ^0.4.7
-  
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^6.0.0
-flutter:
 
+  flutter_lints: ^6.0.0
+
+  # ✅ Code generators لازم تكون هنا
+  build_runner: ^2.4.12
+  freezed: ^3.0.0-0.0.dev
+  json_serializable: ^6.8.0
+
+flutter:
   uses-material-design: true
 
   assets:
     - assets/images/
     - assets/svgs/
     - .env
-
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/to/resolution-aware-images
-
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/to/asset-from-package
-
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/to/font-from-package

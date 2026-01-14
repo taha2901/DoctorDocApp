@@ -1,17 +1,25 @@
 default_platform(:android)
 
 platform :android do
-  desc "Lane For Android Firebase App Distribution"
-  lane :firebase_distribution do
+  desc "Build release APK for production"
+  lane :build_apk do
     sh "flutter clean"
     sh "flutter build apk --release --flavor production --target lib/main_production.dart --no-tree-shake-icons"
-    firebase_app_distribution(
-      app: "1:193597714346:android:afcfabc875f4f5540bc5d3",
-      firebase_cli_token: ENV["FIREBASE_TOKEN"],
-      android_artifact_type: "APK",
-      android_artifact_path: "../build/app/outputs/flutter-apk/app-production-release.apk",
-      testers:"tahahamada2901@gmail.com",
-      release_notes: "First Fastlane Firebase App Distribution"
-    )
+
+    apk_path = "../build/app/outputs/flutter-apk/app-production-release.apk"
+    UI.success("✅ APK Generated at: #{apk_path}")
+  end
+
+  desc "Build and upload APK to Google Drive"
+  lane :upload_drive do
+    sh "flutter clean"
+    sh "flutter build apk --release --flavor production --target lib/main_production.dart --no-tree-shake-icons"
+
+    apk_path = "../build/app/outputs/flutter-apk/app-production-release.apk"
+
+    # رفع الملف على Google Drive ومشاركته
+    sh "gdrive files upload #{apk_path} --share"
+
+    UI.success("🚀 APK built and uploaded to Google Drive successfully!")
   end
 end

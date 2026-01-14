@@ -13,9 +13,9 @@ class ProfileRepo {
   Future<ApiResult<ProfileResponseModel>> getProfileData() async {
     try {
       final response = await _apiService.getProfileData();
-      return ApiResult.success(response);
+      return ApiSuccess(response);
     } catch (error) {
-      return ApiResult.failure(ErrorHandler.handle(error));
+      return ApiFailure(ErrorHandler.handle(error));
     }
   }
 
@@ -25,9 +25,9 @@ class ProfileRepo {
       final response =
           await _apiService.updateProfile(updateProfileRequestModel);
 
-      return ApiResult.success(response);
+      return ApiSuccess(response);
     } catch (error) {
-      return ApiResult.failure(
+      return ApiFailure(
         ErrorHandler.handle(error),
       );
     }
@@ -36,9 +36,9 @@ class ProfileRepo {
   Future<ApiResult<LogoutResponseBody>> logout() async {
     try {
       final response = await _apiService.logout();
-      return ApiResult.success(response);
+      return ApiSuccess(response);
     } catch (error) {
-      return ApiResult.failure(ErrorHandler.handle(error));
+      return ApiFailure(ErrorHandler.handle(error));
     }
   }
 }

@@ -10,9 +10,9 @@ class DoctorFilterRepo {
   Future<ApiResult<List<DoctorFilterResponseModel>>> doctorFilter(String name) async {
     try {
       final response = await _apiService.searchDoctors(name);
-      return ApiResult.success(response.data); // ✅ نرجع ليست الدكاترة
+      return ApiSuccess(response.data); // ✅ نرجع ليست الدكاترة
     } catch (error) {
-      return ApiResult.failure(ErrorHandler.handle(error));
+      return ApiFailure(ErrorHandler.handle(error));
     }
   }
 }

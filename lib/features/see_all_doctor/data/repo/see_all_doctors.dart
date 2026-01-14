@@ -9,9 +9,9 @@ class SeeAllDoctorsSpecializationRepo {
   Future<ApiResult<DoctorSpecializationsResponseModel>> getSeeAllDoctorSpecializations() async {
     try {
       final response = await _apiService.getSeeAllDoctorSpechilizations();
-      return ApiResult.success(response);
+      return ApiSuccess(response);
     } catch (error) {
-      return ApiResult.failure(ErrorHandler.handle(error));
+      return ApiFailure(ErrorHandler.handle(error));
     }
   }
 }

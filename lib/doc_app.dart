@@ -6,7 +6,6 @@ import 'package:doc/core/theming/colors.dart';
 import 'package:doc/features/book_appoint/logic/appointment_cubit.dart';
 import 'package:doc/features/checkout_payment/data/repos/checkout_repo_impl.dart';
 import 'package:doc/features/checkout_payment/presentation/manger/payment_cubit.dart';
-import 'package:doc/features/login/logic/cubit/app_cubit.dart';
 import 'package:doc/features/login/logic/cubit/login_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -9,9 +9,9 @@ class AllAppointmentRepo {
   Future<ApiResult<AllAppointmentResponseBody>> getAllAppointments() async {
     try {
       final response = await _apiService.getAllAppointments();
-      return ApiResult.success(response);
+      return ApiSuccess(response);
     } catch (error) {
-      return ApiResult.failure(ErrorHandler.handle(error));
+      return ApiFailure(ErrorHandler.handle(error));
     }
   }
 }

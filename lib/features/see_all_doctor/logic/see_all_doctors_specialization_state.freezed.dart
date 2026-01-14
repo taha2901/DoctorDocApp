@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,54 +9,46 @@ part of 'see_all_doctors_specialization_state.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$SeeAllDoctorsState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(DoctorSpecializationsResponseModel model) success,
-    required TResult Function(ApiErrorModel apiErrorModel) error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(DoctorSpecializationsResponseModel model)? success,
-    TResult? Function(ApiErrorModel apiErrorModel)? error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(DoctorSpecializationsResponseModel model)? success,
-    TResult Function(ApiErrorModel apiErrorModel)? error,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(SeeAllDoctorsLoading value) loading,
-    required TResult Function(SeeAllDoctorsSuccess value) success,
-    required TResult Function(SeeAllDoctorsError value) error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(SeeAllDoctorsLoading value)? loading,
-    TResult? Function(SeeAllDoctorsSuccess value)? success,
-    TResult? Function(SeeAllDoctorsError value)? error,
-  }) =>
-      throw _privateConstructorUsedError;
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is SeeAllDoctorsState);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'SeeAllDoctorsState()';
+  }
+}
+
+/// @nodoc
+class $SeeAllDoctorsStateCopyWith<$Res> {
+  $SeeAllDoctorsStateCopyWith(
+      SeeAllDoctorsState _, $Res Function(SeeAllDoctorsState) __);
+}
+
+/// Adds pattern-matching-related methods to [SeeAllDoctorsState].
+extension SeeAllDoctorsStatePatterns on SeeAllDoctorsState {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
@@ -64,293 +56,295 @@ mixin _$SeeAllDoctorsState {
     TResult Function(SeeAllDoctorsSuccess value)? success,
     TResult Function(SeeAllDoctorsError value)? error,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initial() when initial != null:
+        return initial(_that);
+      case SeeAllDoctorsLoading() when loading != null:
+        return loading(_that);
+      case SeeAllDoctorsSuccess() when success != null:
+        return success(_that);
+      case SeeAllDoctorsError() when error != null:
+        return error(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(SeeAllDoctorsLoading value) loading,
+    required TResult Function(SeeAllDoctorsSuccess value) success,
+    required TResult Function(SeeAllDoctorsError value) error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initial():
+        return initial(_that);
+      case SeeAllDoctorsLoading():
+        return loading(_that);
+      case SeeAllDoctorsSuccess():
+        return success(_that);
+      case SeeAllDoctorsError():
+        return error(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(SeeAllDoctorsLoading value)? loading,
+    TResult? Function(SeeAllDoctorsSuccess value)? success,
+    TResult? Function(SeeAllDoctorsError value)? error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initial() when initial != null:
+        return initial(_that);
+      case SeeAllDoctorsLoading() when loading != null:
+        return loading(_that);
+      case SeeAllDoctorsSuccess() when success != null:
+        return success(_that);
+      case SeeAllDoctorsError() when error != null:
+        return error(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(DoctorSpecializationsResponseModel model)? success,
+    TResult Function(ApiErrorModel apiErrorModel)? error,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initial() when initial != null:
+        return initial();
+      case SeeAllDoctorsLoading() when loading != null:
+        return loading();
+      case SeeAllDoctorsSuccess() when success != null:
+        return success(_that.model);
+      case SeeAllDoctorsError() when error != null:
+        return error(_that.apiErrorModel);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(DoctorSpecializationsResponseModel model) success,
+    required TResult Function(ApiErrorModel apiErrorModel) error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initial():
+        return initial();
+      case SeeAllDoctorsLoading():
+        return loading();
+      case SeeAllDoctorsSuccess():
+        return success(_that.model);
+      case SeeAllDoctorsError():
+        return error(_that.apiErrorModel);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(DoctorSpecializationsResponseModel model)? success,
+    TResult? Function(ApiErrorModel apiErrorModel)? error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initial() when initial != null:
+        return initial();
+      case SeeAllDoctorsLoading() when loading != null:
+        return loading();
+      case SeeAllDoctorsSuccess() when success != null:
+        return success(_that.model);
+      case SeeAllDoctorsError() when error != null:
+        return error(_that.apiErrorModel);
+      case _:
+        return null;
+    }
+  }
 }
 
 /// @nodoc
-abstract class $SeeAllDoctorsStateCopyWith<$Res> {
-  factory $SeeAllDoctorsStateCopyWith(
-          SeeAllDoctorsState value, $Res Function(SeeAllDoctorsState) then) =
-      _$SeeAllDoctorsStateCopyWithImpl<$Res, SeeAllDoctorsState>;
-}
 
-/// @nodoc
-class _$SeeAllDoctorsStateCopyWithImpl<$Res, $Val extends SeeAllDoctorsState>
-    implements $SeeAllDoctorsStateCopyWith<$Res> {
-  _$SeeAllDoctorsStateCopyWithImpl(this._value, this._then);
+class _Initial implements SeeAllDoctorsState {
+  const _Initial();
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Initial);
+  }
 
-  /// Create a copy of SeeAllDoctorsState
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$SeeAllDoctorsStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of SeeAllDoctorsState
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
+  @override
+  int get hashCode => runtimeType.hashCode;
 
   @override
   String toString() {
     return 'SeeAllDoctorsState.initial()';
   }
+}
+
+/// @nodoc
+
+class SeeAllDoctorsLoading implements SeeAllDoctorsState {
+  const SeeAllDoctorsLoading();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
+        (other.runtimeType == runtimeType && other is SeeAllDoctorsLoading);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(DoctorSpecializationsResponseModel model) success,
-    required TResult Function(ApiErrorModel apiErrorModel) error,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(DoctorSpecializationsResponseModel model)? success,
-    TResult? Function(ApiErrorModel apiErrorModel)? error,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(DoctorSpecializationsResponseModel model)? success,
-    TResult Function(ApiErrorModel apiErrorModel)? error,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(SeeAllDoctorsLoading value) loading,
-    required TResult Function(SeeAllDoctorsSuccess value) success,
-    required TResult Function(SeeAllDoctorsError value) error,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(SeeAllDoctorsLoading value)? loading,
-    TResult? Function(SeeAllDoctorsSuccess value)? success,
-    TResult? Function(SeeAllDoctorsError value)? error,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(SeeAllDoctorsLoading value)? loading,
-    TResult Function(SeeAllDoctorsSuccess value)? success,
-    TResult Function(SeeAllDoctorsError value)? error,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Initial implements SeeAllDoctorsState {
-  const factory _Initial() = _$InitialImpl;
-}
-
-/// @nodoc
-abstract class _$$SeeAllDoctorsLoadingImplCopyWith<$Res> {
-  factory _$$SeeAllDoctorsLoadingImplCopyWith(_$SeeAllDoctorsLoadingImpl value,
-          $Res Function(_$SeeAllDoctorsLoadingImpl) then) =
-      __$$SeeAllDoctorsLoadingImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$SeeAllDoctorsLoadingImplCopyWithImpl<$Res>
-    extends _$SeeAllDoctorsStateCopyWithImpl<$Res, _$SeeAllDoctorsLoadingImpl>
-    implements _$$SeeAllDoctorsLoadingImplCopyWith<$Res> {
-  __$$SeeAllDoctorsLoadingImplCopyWithImpl(_$SeeAllDoctorsLoadingImpl _value,
-      $Res Function(_$SeeAllDoctorsLoadingImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of SeeAllDoctorsState
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$SeeAllDoctorsLoadingImpl implements SeeAllDoctorsLoading {
-  const _$SeeAllDoctorsLoadingImpl();
 
   @override
   String toString() {
     return 'SeeAllDoctorsState.loading()';
   }
+}
+
+/// @nodoc
+
+class SeeAllDoctorsSuccess implements SeeAllDoctorsState {
+  SeeAllDoctorsSuccess(this.model);
+
+  final DoctorSpecializationsResponseModel model;
+
+  /// Create a copy of SeeAllDoctorsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $SeeAllDoctorsSuccessCopyWith<SeeAllDoctorsSuccess> get copyWith =>
+      _$SeeAllDoctorsSuccessCopyWithImpl<SeeAllDoctorsSuccess>(
+          this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SeeAllDoctorsLoadingImpl);
+            other is SeeAllDoctorsSuccess &&
+            (identical(other.model, model) || other.model == model));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, model);
 
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(DoctorSpecializationsResponseModel model) success,
-    required TResult Function(ApiErrorModel apiErrorModel) error,
-  }) {
-    return loading();
+  String toString() {
+    return 'SeeAllDoctorsState.success(model: $model)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(DoctorSpecializationsResponseModel model)? success,
-    TResult? Function(ApiErrorModel apiErrorModel)? error,
-  }) {
-    return loading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(DoctorSpecializationsResponseModel model)? success,
-    TResult Function(ApiErrorModel apiErrorModel)? error,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(SeeAllDoctorsLoading value) loading,
-    required TResult Function(SeeAllDoctorsSuccess value) success,
-    required TResult Function(SeeAllDoctorsError value) error,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(SeeAllDoctorsLoading value)? loading,
-    TResult? Function(SeeAllDoctorsSuccess value)? success,
-    TResult? Function(SeeAllDoctorsError value)? error,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(SeeAllDoctorsLoading value)? loading,
-    TResult Function(SeeAllDoctorsSuccess value)? success,
-    TResult Function(SeeAllDoctorsError value)? error,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class SeeAllDoctorsLoading implements SeeAllDoctorsState {
-  const factory SeeAllDoctorsLoading() = _$SeeAllDoctorsLoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$SeeAllDoctorsSuccessImplCopyWith<$Res> {
-  factory _$$SeeAllDoctorsSuccessImplCopyWith(_$SeeAllDoctorsSuccessImpl value,
-          $Res Function(_$SeeAllDoctorsSuccessImpl) then) =
-      __$$SeeAllDoctorsSuccessImplCopyWithImpl<$Res>;
+abstract mixin class $SeeAllDoctorsSuccessCopyWith<$Res>
+    implements $SeeAllDoctorsStateCopyWith<$Res> {
+  factory $SeeAllDoctorsSuccessCopyWith(SeeAllDoctorsSuccess value,
+          $Res Function(SeeAllDoctorsSuccess) _then) =
+      _$SeeAllDoctorsSuccessCopyWithImpl;
   @useResult
   $Res call({DoctorSpecializationsResponseModel model});
 }
 
 /// @nodoc
-class __$$SeeAllDoctorsSuccessImplCopyWithImpl<$Res>
-    extends _$SeeAllDoctorsStateCopyWithImpl<$Res, _$SeeAllDoctorsSuccessImpl>
-    implements _$$SeeAllDoctorsSuccessImplCopyWith<$Res> {
-  __$$SeeAllDoctorsSuccessImplCopyWithImpl(_$SeeAllDoctorsSuccessImpl _value,
-      $Res Function(_$SeeAllDoctorsSuccessImpl) _then)
-      : super(_value, _then);
+class _$SeeAllDoctorsSuccessCopyWithImpl<$Res>
+    implements $SeeAllDoctorsSuccessCopyWith<$Res> {
+  _$SeeAllDoctorsSuccessCopyWithImpl(this._self, this._then);
+
+  final SeeAllDoctorsSuccess _self;
+  final $Res Function(SeeAllDoctorsSuccess) _then;
 
   /// Create a copy of SeeAllDoctorsState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
     Object? model = null,
   }) {
-    return _then(_$SeeAllDoctorsSuccessImpl(
+    return _then(SeeAllDoctorsSuccess(
       null == model
-          ? _value.model
+          ? _self.model
           : model // ignore: cast_nullable_to_non_nullable
               as DoctorSpecializationsResponseModel,
     ));
@@ -359,177 +353,23 @@ class __$$SeeAllDoctorsSuccessImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SeeAllDoctorsSuccessImpl implements SeeAllDoctorsSuccess {
-  _$SeeAllDoctorsSuccessImpl(this.model);
+class SeeAllDoctorsError implements SeeAllDoctorsState {
+  const SeeAllDoctorsError(this.apiErrorModel);
 
-  @override
-  final DoctorSpecializationsResponseModel model;
-
-  @override
-  String toString() {
-    return 'SeeAllDoctorsState.success(model: $model)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SeeAllDoctorsSuccessImpl &&
-            (identical(other.model, model) || other.model == model));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, model);
-
-  /// Create a copy of SeeAllDoctorsState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SeeAllDoctorsSuccessImplCopyWith<_$SeeAllDoctorsSuccessImpl>
-      get copyWith =>
-          __$$SeeAllDoctorsSuccessImplCopyWithImpl<_$SeeAllDoctorsSuccessImpl>(
-              this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(DoctorSpecializationsResponseModel model) success,
-    required TResult Function(ApiErrorModel apiErrorModel) error,
-  }) {
-    return success(model);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(DoctorSpecializationsResponseModel model)? success,
-    TResult? Function(ApiErrorModel apiErrorModel)? error,
-  }) {
-    return success?.call(model);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(DoctorSpecializationsResponseModel model)? success,
-    TResult Function(ApiErrorModel apiErrorModel)? error,
-    required TResult orElse(),
-  }) {
-    if (success != null) {
-      return success(model);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(SeeAllDoctorsLoading value) loading,
-    required TResult Function(SeeAllDoctorsSuccess value) success,
-    required TResult Function(SeeAllDoctorsError value) error,
-  }) {
-    return success(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(SeeAllDoctorsLoading value)? loading,
-    TResult? Function(SeeAllDoctorsSuccess value)? success,
-    TResult? Function(SeeAllDoctorsError value)? error,
-  }) {
-    return success?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(SeeAllDoctorsLoading value)? loading,
-    TResult Function(SeeAllDoctorsSuccess value)? success,
-    TResult Function(SeeAllDoctorsError value)? error,
-    required TResult orElse(),
-  }) {
-    if (success != null) {
-      return success(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class SeeAllDoctorsSuccess implements SeeAllDoctorsState {
-  factory SeeAllDoctorsSuccess(final DoctorSpecializationsResponseModel model) =
-      _$SeeAllDoctorsSuccessImpl;
-
-  DoctorSpecializationsResponseModel get model;
-
-  /// Create a copy of SeeAllDoctorsState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SeeAllDoctorsSuccessImplCopyWith<_$SeeAllDoctorsSuccessImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$SeeAllDoctorsErrorImplCopyWith<$Res> {
-  factory _$$SeeAllDoctorsErrorImplCopyWith(_$SeeAllDoctorsErrorImpl value,
-          $Res Function(_$SeeAllDoctorsErrorImpl) then) =
-      __$$SeeAllDoctorsErrorImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({ApiErrorModel apiErrorModel});
-}
-
-/// @nodoc
-class __$$SeeAllDoctorsErrorImplCopyWithImpl<$Res>
-    extends _$SeeAllDoctorsStateCopyWithImpl<$Res, _$SeeAllDoctorsErrorImpl>
-    implements _$$SeeAllDoctorsErrorImplCopyWith<$Res> {
-  __$$SeeAllDoctorsErrorImplCopyWithImpl(_$SeeAllDoctorsErrorImpl _value,
-      $Res Function(_$SeeAllDoctorsErrorImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of SeeAllDoctorsState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? apiErrorModel = null,
-  }) {
-    return _then(_$SeeAllDoctorsErrorImpl(
-      null == apiErrorModel
-          ? _value.apiErrorModel
-          : apiErrorModel // ignore: cast_nullable_to_non_nullable
-              as ApiErrorModel,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$SeeAllDoctorsErrorImpl implements SeeAllDoctorsError {
-  const _$SeeAllDoctorsErrorImpl(this.apiErrorModel);
-
-  @override
   final ApiErrorModel apiErrorModel;
 
-  @override
-  String toString() {
-    return 'SeeAllDoctorsState.error(apiErrorModel: $apiErrorModel)';
-  }
+  /// Create a copy of SeeAllDoctorsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $SeeAllDoctorsErrorCopyWith<SeeAllDoctorsError> get copyWith =>
+      _$SeeAllDoctorsErrorCopyWithImpl<SeeAllDoctorsError>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SeeAllDoctorsErrorImpl &&
+            other is SeeAllDoctorsError &&
             (identical(other.apiErrorModel, apiErrorModel) ||
                 other.apiErrorModel == apiErrorModel));
   }
@@ -537,99 +377,43 @@ class _$SeeAllDoctorsErrorImpl implements SeeAllDoctorsError {
   @override
   int get hashCode => Object.hash(runtimeType, apiErrorModel);
 
+  @override
+  String toString() {
+    return 'SeeAllDoctorsState.error(apiErrorModel: $apiErrorModel)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $SeeAllDoctorsErrorCopyWith<$Res>
+    implements $SeeAllDoctorsStateCopyWith<$Res> {
+  factory $SeeAllDoctorsErrorCopyWith(
+          SeeAllDoctorsError value, $Res Function(SeeAllDoctorsError) _then) =
+      _$SeeAllDoctorsErrorCopyWithImpl;
+  @useResult
+  $Res call({ApiErrorModel apiErrorModel});
+}
+
+/// @nodoc
+class _$SeeAllDoctorsErrorCopyWithImpl<$Res>
+    implements $SeeAllDoctorsErrorCopyWith<$Res> {
+  _$SeeAllDoctorsErrorCopyWithImpl(this._self, this._then);
+
+  final SeeAllDoctorsError _self;
+  final $Res Function(SeeAllDoctorsError) _then;
+
   /// Create a copy of SeeAllDoctorsState
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
   @pragma('vm:prefer-inline')
-  _$$SeeAllDoctorsErrorImplCopyWith<_$SeeAllDoctorsErrorImpl> get copyWith =>
-      __$$SeeAllDoctorsErrorImplCopyWithImpl<_$SeeAllDoctorsErrorImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(DoctorSpecializationsResponseModel model) success,
-    required TResult Function(ApiErrorModel apiErrorModel) error,
+  $Res call({
+    Object? apiErrorModel = null,
   }) {
-    return error(apiErrorModel);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(DoctorSpecializationsResponseModel model)? success,
-    TResult? Function(ApiErrorModel apiErrorModel)? error,
-  }) {
-    return error?.call(apiErrorModel);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(DoctorSpecializationsResponseModel model)? success,
-    TResult Function(ApiErrorModel apiErrorModel)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(apiErrorModel);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(SeeAllDoctorsLoading value) loading,
-    required TResult Function(SeeAllDoctorsSuccess value) success,
-    required TResult Function(SeeAllDoctorsError value) error,
-  }) {
-    return error(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(SeeAllDoctorsLoading value)? loading,
-    TResult? Function(SeeAllDoctorsSuccess value)? success,
-    TResult? Function(SeeAllDoctorsError value)? error,
-  }) {
-    return error?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(SeeAllDoctorsLoading value)? loading,
-    TResult Function(SeeAllDoctorsSuccess value)? success,
-    TResult Function(SeeAllDoctorsError value)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this);
-    }
-    return orElse();
+    return _then(SeeAllDoctorsError(
+      null == apiErrorModel
+          ? _self.apiErrorModel
+          : apiErrorModel // ignore: cast_nullable_to_non_nullable
+              as ApiErrorModel,
+    ));
   }
 }
 
-abstract class SeeAllDoctorsError implements SeeAllDoctorsState {
-  const factory SeeAllDoctorsError(final ApiErrorModel apiErrorModel) =
-      _$SeeAllDoctorsErrorImpl;
-
-  ApiErrorModel get apiErrorModel;
-
-  /// Create a copy of SeeAllDoctorsState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SeeAllDoctorsErrorImplCopyWith<_$SeeAllDoctorsErrorImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on

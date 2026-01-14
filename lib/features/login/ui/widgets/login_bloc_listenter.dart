@@ -2,7 +2,6 @@ import 'package:doc/core/helpers/extentions.dart';
 import 'package:doc/core/routings/routers.dart';
 import 'package:doc/core/theming/colors.dart';
 import 'package:doc/core/theming/styles.dart';
-import 'package:doc/features/login/logic/cubit/app_cubit.dart';
 import 'package:doc/features/login/logic/cubit/login_cubit.dart';
 import 'package:doc/features/login/logic/cubit/login_state.dart';
 import 'package:flutter/material.dart';
