@@ -1,17 +1,68 @@
-# doctor_doc
+# DocDoc App 🏥📱
 
-A new Flutter project.
+DocDoc is a Flutter-based medical appointment booking app connected to an API.  
+Users can browse doctors, book appointments, pay securely using Stripe, and manage their personal information.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🚀 Features
 
-A few resources to get you started if this is your first Flutter project:
+### 👨‍⚕️ For Users
+- 🩺 **Doctors List** – Browse available doctors from the API  
+- 📅 **Appointment Booking** – Book appointments easily  
+- 💳 **Online Payment** – Secure payments using Stripe  
+- 👤 **Profile Management** – View and edit personal data  
+- 🔄 **API Integration** – Real-time data from backend  
+- 📱 **Responsive UI** – Works on different screen sizes  
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-"# DoctorDocApp" 
+## 🔌 API Integration
+
+The app is fully connected to a backend API to handle:
+- Doctors data  
+- Appointments  
+- User data  
+- Booking management  
+
+---
+
+## 💳 Payment Integration
+
+Payments are handled securely using **Stripe**:
+- Secure checkout  
+- Online payments  
+- Booking confirmation after payment  
+
+---
+
+## 📸 App Preview
+
+![App Preview](assets/images/Product Overview.png)
+
+---
+
+## 📂 Download & Demo
+
+- 📱 **APK Download**  
+  https://drive.google.com/file/d/1VwhMaGUsjLUM1h508_FhAXRxMdfWPEzM/view?usp=drivesdk
+
+- 🎬 **Demo Video**  
+  https://drive.google.com/file/d/1FWfHmse6VVf1KQ2Tm6D61zcvIpXEuQV3/view?usp=drivesdk
+
+---
+
+## 🛠️ Installation & Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/taha2901/DoctorDocApp.git
+
+# Navigate to project folder
+cd DoctorDocApp
+
+# Install dependencies
+flutter pub get
+
+# Run the app
+flutter run
