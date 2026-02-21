@@ -1,28 +1,32 @@
 class UpdateProfileRequestBody {
-  final String name;
-  final String email;
-  final String phone;
-  final String gender; // هتبعته بس، مش هتستخدمه في الواجهة
-  final String password;
-  final String passwordConfirmation; // نفس الشيء
+  final String? name;
+  final String? email;
+  final String? phone;
+  final String? gender;
+  final String? password;
+  final String? passwordConfirmation;
 
   UpdateProfileRequestBody({
-    required this.name,
-    required this.email,
-    required this.phone,
-    this.gender = '0', // قيمة افتراضية لو مش هتعدل عليه
-    required this.password,
-    this.passwordConfirmation = '',
+    this.name,
+    this.email,
+    this.phone,
+    this.gender = '0',
+    this.password,
+    this.passwordConfirmation,
   });
 
   Map<String, dynamic> toJson() {
-    return {
-      'name': name,
-      'email': email,
-      'phone': phone,
-      'gender': gender,
-      'password': password,
-      'password_confirmation': passwordConfirmation,
-    };
+    final Map<String, dynamic> data = {};
+
+    if (name != null) data['name'] = name;
+    if (email != null) data['email'] = email;
+    if (phone != null) data['phone'] = phone;
+    if (gender != null) data['gender'] = gender;
+    if (password != null && password!.isNotEmpty) {
+      data['password'] = password;
+      data['password_confirmation'] = password;
+    }
+
+    return data;
   }
 }

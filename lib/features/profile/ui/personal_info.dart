@@ -92,14 +92,39 @@ class _PersonalInformationState extends State<PersonalInformation> {
   }
 
   void _saveProfile(BuildContext context) {
-    if (formKey.currentState!.validate()) {
-      _profileCubit.updateProfile(
-        name: _nameController.text.trim(),
-        email: _emailController.text.trim(),
-        phone: _phoneController.text.trim(),
-        password: _passwordController.text,
+    if (!formKey.currentState!.validate()) return;
+
+    final old = _profileCubit.profileResponseModel!.data!.first;
+
+    // ابعت القيم بس لو اتغيرت
+    final name = _nameController.text.trim() != old.name
+        ? _nameController.text.trim()
+        : null;
+    final email = _emailController.text.trim() != old.email
+        ? _emailController.text.trim()
+        : null;
+    final phone = _phoneController.text.trim() != old.phone
+        ? _phoneController.text.trim()
+        : null;
+    final password =
+        _passwordController.text.isNotEmpty ? _passwordController.text : null;
+
+    if (name == null && email == null && phone == null && password == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('No changes to save'),
+          backgroundColor: Colors.orange,
+        ),
       );
+      return;
     }
+
+    _profileCubit.updateProfile(
+      name: name,
+      email: email,
+      phone: phone,
+      password: password,
+    );
   }
 
   @override
@@ -117,24 +142,48 @@ class _PersonalInformationState extends State<PersonalInformation> {
             );
             setState(() {
               _isEditing = false;
+              _passwordController.clear();
             });
           } else if (state is UpdateProfileError) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(state.apiErrorModel.message ?? 'Update failed'),
-                backgroundColor: Colors.red,
+            String errorMessage =
+                state.apiErrorModel.message ?? 'Update failed';
+
+            if (state.apiErrorModel.data != null &&
+                state.apiErrorModel.data!.isNotEmpty) {
+              List<String> messages = [];
+              state.apiErrorModel.data!.forEach((key, value) {
+                if (value is List) {
+                  messages.add('$key: ${value.join(', ')}');
+                } else {
+                  messages.add('$key: $value');
+                }
+              });
+              errorMessage = messages.join('\n');
+            }
+
+            showDialog(
+              context: context,
+              builder: (_) => AlertDialog(
+                title: const Text('Update Failed'),
+                content: Text(errorMessage),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.of(context).pop(),
+                    child: const Text('OK'),
+                  )
+                ],
               ),
             );
           }
         },
         builder: (context, state) {
-          final profileResponse =
-              ProfileCubit.get(context).profileResponseModel;
+          final profileResponse = _profileCubit.profileResponseModel;
           final profileData = profileResponse?.data?.first;
 
-          if (_nameController.text.isEmpty) {
+          if (_nameController.text.isEmpty && profileData != null) {
             _initializeControllers(profileData);
           }
+
           return Scaffold(
             appBar: AppBar(
               title: const Text('Personal Information'),
@@ -176,12 +225,11 @@ class _PersonalInformationState extends State<PersonalInformation> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          // Name
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const NamingTextField(
-                                name: 'Name',
-                              ),
+                              const NamingTextField(name: 'Name'),
                               verticalSpace(8),
                               _isEditing
                                   ? AppTextFormField(
@@ -199,48 +247,40 @@ class _PersonalInformationState extends State<PersonalInformation> {
                                       padding: const EdgeInsets.symmetric(
                                           vertical: 12, horizontal: 15),
                                       decoration: BoxDecoration(
-                                        border:
-                                            Border.all(color: Colors.grey[300]!),
+                                        border: Border.all(
+                                            color: Colors.grey[300]!),
                                         borderRadius: BorderRadius.circular(8),
                                       ),
-                                      child: Row(
-                                        children: [
-                                          Expanded(
-                                            child: Text(
-                                              _nameController.text.isEmpty
-                                                  ? 'No name'
-                                                  : _nameController.text,
-                                              style: const TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
+                                      child: Text(
+                                        _nameController.text.isEmpty
+                                            ? 'No name'
+                                            : _nameController.text,
+                                        style: const TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w500),
                                       ),
                                     ),
                             ],
                           ),
                           verticalSpace(20),
-                      
+
+                          // Email
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                               const NamingTextField(name: 'Email',),
-                              const SizedBox(height: 8),
+                              const NamingTextField(name: 'Email'),
+                              verticalSpace(8),
                               _isEditing
                                   ? AppTextFormField(
                                       hintText: 'Enter your email',
                                       controller: _emailController,
                                       validator: (value) {
-                                        if (value == null ||
-                                            value.trim().isEmpty) {
-                                          return 'Email is required';
-                                        }
-                                        if (!RegExp(
-                                                r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
-                                            .hasMatch(value)) {
-                                          return 'Enter a valid email';
+                                        if (value != null && value.isNotEmpty) {
+                                          if (!RegExp(
+                                                  r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
+                                              .hasMatch(value)) {
+                                            return 'Enter a valid email';
+                                          }
                                         }
                                         return null;
                                       },
@@ -249,62 +289,53 @@ class _PersonalInformationState extends State<PersonalInformation> {
                                       padding: const EdgeInsets.symmetric(
                                           vertical: 12, horizontal: 15),
                                       decoration: BoxDecoration(
-                                        border:
-                                            Border.all(color: Colors.grey[300]!),
+                                        border: Border.all(
+                                            color: Colors.grey[300]!),
                                         borderRadius: BorderRadius.circular(8),
                                       ),
-                                      child: Row(
-                                        children: [
-                                          Expanded(
-                                            child: Text(
-                                              _emailController.text.isEmpty
-                                                  ? 'No email'
-                                                  : _emailController.text,
-                                              style: const TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
+                                      child: Text(
+                                        _emailController.text.isEmpty
+                                            ? 'No email'
+                                            : _emailController.text,
+                                        style: const TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w500),
                                       ),
                                     ),
                             ],
                           ),
-                          verticalSpace(20) ,
-                      
-                          if (_isEditing) ...[
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                 const NamingTextField(name: 'New Password',),
-                                const SizedBox(height: 8),
-                                AppTextFormField(
-                                  hintText: 'Enter new password',
-                                  controller: _passwordController,
-                                  isObscureText: true,
-                                  validator: (value) {
-                                    if (value == null || value.isEmpty) {
-                                      return 'Password is required';
-                                    }
-                                    if (value.length < 6) {
-                                      return 'Password must be at least 6 characters';
-                                    }
-                                    return null;
-                                  },
-                                ),
-                              ],
-                            ),
-                            verticalSpace(20),
-                          ] else ...[
-                            _buildPasswordDisplay(),
-                            verticalSpace(20),
-                          ],
-                      
+                          verticalSpace(20),
+
+                          // Password
+                          _isEditing
+                              ? Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const NamingTextField(name: 'New Password'),
+                                    verticalSpace(8),
+                                    AppTextFormField(
+                                      hintText: 'Enter new password',
+                                      controller: _passwordController,
+                                      isObscureText: true,
+                                      validator: (value) {
+                                        if (value != null &&
+                                            value.isNotEmpty &&
+                                            value.length < 6) {
+                                          return 'Password must be at least 6 characters';
+                                        }
+                                        return null;
+                                      },
+                                    ),
+                                  ],
+                                )
+                              : _buildPasswordDisplay(),
+                          verticalSpace(20),
+
+                          // Phone
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                               const NamingTextField(name: 'Phone',),
+                              const NamingTextField(name: 'Phone'),
                               verticalSpace(8),
                               _isEditing
                                   ? AppTextFormField(
@@ -322,40 +353,32 @@ class _PersonalInformationState extends State<PersonalInformation> {
                                       padding: const EdgeInsets.symmetric(
                                           vertical: 12, horizontal: 15),
                                       decoration: BoxDecoration(
-                                        border:
-                                            Border.all(color: Colors.grey[300]!),
+                                        border: Border.all(
+                                            color: Colors.grey[300]!),
                                         borderRadius: BorderRadius.circular(8),
                                       ),
-                                      child: Row(
-                                        children: [
-                                          Expanded(
-                                            child: Text(
-                                              _phoneController.text.isEmpty
-                                                  ? 'No phone'
-                                                  : _phoneController.text,
-                                              style: const TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
+                                      child: Text(
+                                        _phoneController.text.isEmpty
+                                            ? 'No phone'
+                                            : _phoneController.text,
+                                        style: const TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w500),
                                       ),
                                     ),
                             ],
                           ),
                           verticalSpace(30),
-                      
+
+                          // Info
                           Text(
-                            'When you set up your personal information settings, you should use one to provide accurate information.',
+                            'When you set up your personal information settings, use accurate info.',
                             style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.grey[600],
-                            ),
+                                fontSize: 16, color: Colors.grey[600]),
                           ),
                           verticalSpace(30),
-                      
-                          // Save Button (only show when editing)
+
+                          // Save Button
                           if (_isEditing)
                             SizedBox(
                               width: double.infinity,
@@ -374,11 +397,10 @@ class _PersonalInformationState extends State<PersonalInformation> {
                                   child: state is UpdateProfileLoading
                                       ? const CircularProgressIndicator(
                                           color: Colors.white)
-                                      : const Text(
-                                          'Save Changes',
+                                      : const Text('Save Changes',
                                           style: TextStyle(
-                                              fontSize: 18, color: Colors.white),
-                                        ),
+                                              fontSize: 18,
+                                              color: Colors.white)),
                                 ),
                               ),
                             ),
@@ -395,4 +417,3 @@ class _PersonalInformationState extends State<PersonalInformation> {
     );
   }
 }
-

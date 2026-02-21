@@ -1,6 +1,5 @@
 import 'package:doc/core/helpers/spacing.dart';
 import 'package:doc/core/routings/routers.dart';
-import 'package:doc/core/theming/colors.dart';
 import 'package:doc/core/helpers/shared_pref_helper.dart';
 import 'package:doc/features/profile/logic/profile_cubit.dart';
 import 'package:doc/features/profile/logic/profile_state.dart';
@@ -9,7 +8,6 @@ import 'package:doc/features/profile/ui/widget/profile_app_bar.dart';
 import 'package:doc/features/profile/ui/widget/profile_title.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});

@@ -42,49 +42,49 @@ class ProfileCubit extends Cubit<ProfileState> {
   }
 
   Future<void> updateProfile({
-    required String name,
-    required String email,
-    required String phone,
-    required String password,
-  }) async {
-    emit(const ProfileState.updateProfileLoading());
+  String? name,
+  String? email,
+  String? phone,
+  String? password,
+}) async {
+  emit(const ProfileState.updateProfileLoading());
+  final old = profileResponseModel!.data!.first;
 
-    final updateProfileRequestBody = UpdateProfileRequestBody(
-      name: name,
-      email: email,
-      phone: phone,
-      password: password,
-      passwordConfirmation: password,
-    );
+  final updateProfileRequestBody = UpdateProfileRequestBody(
+    name: (name != null && name != old.name) ? name : null,
+    email: (email != null && email != old.email) ? email : null,
+    phone: (phone != null && phone != old.phone) ? phone : null,
+    password: password,
+    passwordConfirmation: password,
+  );
 
-    final ApiResult<UpdateProfileResponseBody> result =
-        await _profileRepo.updateProfile(updateProfileRequestBody);
+  final ApiResult<UpdateProfileResponseBody> result =
+      await _profileRepo.updateProfile(updateProfileRequestBody);
 
-    if (isClosed) return;
+  if (isClosed) return;
 
-    if (result is ApiSuccess<UpdateProfileResponseBody>) {
-      // Update local profile cache
-      if (profileResponseModel?.data != null &&
-          profileResponseModel!.data!.isNotEmpty) {
-        profileResponseModel!.data!.first.name = name;
-        profileResponseModel!.data!.first.email = email;
-        profileResponseModel!.data!.first.phone = phone;
-      }
-
-      emit(const ProfileState.updateProfileSuccess());
-      return;
+  if (result is ApiSuccess<UpdateProfileResponseBody>) {
+    // Update local profile cache
+    if (profileResponseModel?.data != null && profileResponseModel!.data!.isNotEmpty) {
+      if (updateProfileRequestBody.name != null) profileResponseModel!.data!.first.name = name;
+      if (updateProfileRequestBody.email != null) profileResponseModel!.data!.first.email = email;
+      if (updateProfileRequestBody.phone != null) profileResponseModel!.data!.first.phone = phone;
     }
 
-    if (result is ApiFailure<UpdateProfileResponseBody>) {
-      final failure = result;
-      emit(ProfileState.updateProfileError(failure.errorHandler.apiErrorModel));
-      return;
-    }
-
-    emit(ProfileState.updateProfileError(
-      ErrorHandler.handle("Unexpected error").apiErrorModel,
-    ));
+    emit(const ProfileState.updateProfileSuccess());
+    return;
   }
+
+  if (result is ApiFailure<UpdateProfileResponseBody>) {
+    final failure = result;
+    emit(ProfileState.updateProfileError(failure.errorHandler.apiErrorModel));
+    return;
+  }
+
+  emit(ProfileState.updateProfileError(
+    ErrorHandler.handle("Unexpected error").apiErrorModel,
+  ));
+}
 
   Future<void> logout() async {
     emit(const ProfileState.logoutLoading());
