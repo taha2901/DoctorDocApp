@@ -38,8 +38,7 @@ Payments are handled securely using **Stripe**:
 
 ## 📸 App Preview
 
-![App Preview](assets/images/product_overview.png)
-
+<img src="assets/images/product_overview.png" width="300"/>
 ---
 
 ## 📂 Download & Demo
